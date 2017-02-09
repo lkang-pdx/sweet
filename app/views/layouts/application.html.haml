@@ -10,7 +10,8 @@
   %body
     .container
       %ul.nav.nav-tabs
-        %li= link_to "Home", welcome_index_path
+        %li= link_to "Home", root_path
+        %li= link_to "Pins", pins_path
         .pull-right.user-info
           - if user_signed_in?
             Signed in as:
