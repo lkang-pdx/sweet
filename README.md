@@ -1,3 +1,3 @@
 # Sweet
 
-#### Built with Rails 5
+#### Built with Rails 5, Haml & CSS

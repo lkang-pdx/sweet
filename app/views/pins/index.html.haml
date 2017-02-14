@@ -1,16 +1,13 @@
 %p#notice= notice
-%h1 Pins
-%table
-  %thead
-    %tr
-      %th Description
-      %th{:colspan => "3"}
-  %tbody
-    - @pins.each do |pin|
-      %tr
-        %td= pin.description
-        %td= link_to 'Show', pin
-        %td= link_to 'Edit', edit_pin_path(pin)
-        %td= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Pin', new_pin_path
+
+.row
+  - @pins.each do |pin|
+    .col-md-3
+      .panel.panel-default.pin
+        .panel-body
+          = image_tag pin.pin_image.url(:medium), class: 'img-responsive'
+        .panel-footer
+          %p= pin.description
+          %div
+            = link_to 'Edit', edit_pin_path(pin)
+            | #{link_to 'Delete', pin, method: :delete, data: {confirm: 'Are you sure?'}}
