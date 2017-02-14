@@ -58,36 +58,21 @@ RSpec.describe PinsController, type: :controller do
     end
   end
 
-  # describe "GET edit" do
-  #   it "returns http success" do
-  #     get :edit, params: { user_id: user.id, id: pin.id }
-  #     expect(response).to have_http_status(:success)
-  #   end
-  #
-  #   it "renders the #edit view" do
-  #     get :edit, params: { user_id: user.id, id: pin.id }
-  #     expect(response).to render_template :edit
-  #   end
-  # end
+  describe "GET edit" do
+    it "redirects to pins index" do
+      get :edit, params: { user_id: user.id, id: pin.id }
+      expect(response).to redirect_to pins_path
+    end
+  end
 
-  # describe "PUT update" do
-  #   it "updates pin with expected attributes" do
-  #     new_description = pin2.description
-  #
-  #     put :update, params: { user_id: user.id, id: pin2.id, pin: {description: new_description} }
-  #
-  #     updated_pin = assigns(:pin)
-  #     expect(updated_pin.id).to eq pin2.id
-  #     expect(updated_pin.description).to eq new_description
-  #   end
-  #
-  #   it "redirects to the updated pin" do
-  #     new_description = pin2.description
-  #
-  #     put :update, params: { user_id: user.id, id: pin2.id, pin: {description: new_description} }
-  #     expect(response).to redirect_to edit_pin_path(id: pin2.id)
-  #   end
-  # end
+  describe "PUT update" do
+    it "redirects to pins index" do
+      new_description = pin2.description
+
+      put :update, params: { user_id: user.id, id: pin2.id, pin: {description: new_description} }
+      expect(response).to redirect_to pins_path
+    end
+  end
 
   describe "DELETE destroy" do
     it "redirects to pins index" do
