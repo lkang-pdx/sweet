@@ -1,8 +1,8 @@
 %p#notice= notice
 
-.row
+.row.pin-grid.transitions-enabled
   - @pins.each do |pin|
-    .col-md-3
+    .col-md-3.pin-item
       .panel.panel-default.pin
         .panel-body
           = image_tag pin.pin_image.url(:medium), class: 'img-responsive'

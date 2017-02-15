@@ -40,9 +40,9 @@ RSpec.describe PinsController, type: :controller do
       expect(assigns(:pin)).to eq Pin.last
     end
 
-    it "redirects to the new pin" do
+    it "redirects to pins index" do
       post :create, params: {user_id: user.id, pin: {description: pin.description}}
-      expect(response).to redirect_to pin_path(id: Pin.last.id)
+      expect(response).to redirect_to pins_path
     end
   end
 
