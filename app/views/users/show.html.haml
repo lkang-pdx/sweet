@@ -1,11 +1,12 @@
-%p#notice= notice
+%h3
+  = @user.username
 
 .row.pin-grid.transitions-enabled
-  - @pins.each do |pin|
+  - @user.pins.each do |pin|
     .col-md-3.pin-item
       .panel.panel-default.pin
         .panel-body
-          = link_to image_tag(pin.pin_image.url(:medium)), pin
+          = image_tag pin.pin_image.url(:medium), class: 'img-responsive'
         .panel-footer
           %p= link_to pin.user.username, user_path(pin.user.username)
           %p= pin.description
