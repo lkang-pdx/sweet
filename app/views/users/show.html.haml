@@ -1,12 +1,16 @@
 %h3
   = @user.username
+%p
+  = @user.bio
+%div
+  = image_tag @user.avatar.url(:thumb)
 
 .row.pin-grid.transitions-enabled
   - @user.pins.each do |pin|
     .col-md-3.pin-item
       .panel.panel-default.pin
         .panel-body
-          = image_tag pin.pin_image.url(:medium), class: 'img-responsive'
+          = link_to image_tag(pin.pin_image.url(:medium)), pin
         .panel-footer
           %p= link_to pin.user.username, user_path(pin.user.username)
           %p= pin.description
