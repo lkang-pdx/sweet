@@ -16,6 +16,8 @@
   .field
     = f.label :avatar
     %br/
+    = image_tag @user.avatar.url(:thumb)
+    %br/
     = f.file_field :avatar
   .field
     = f.label :password

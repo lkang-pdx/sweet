@@ -13,3 +13,6 @@
             %div
               = link_to 'Edit', edit_pin_path(pin)
               | #{link_to 'Delete', pin, method: :delete, data: {confirm: 'Are you sure?'}}
+          - if user_signed_in? && pin.user != current_user
+            %div
+              = link_to 'Repost', repost_pin_path(pin), method: :post, data: {confirm: 'Are you sure?'}
