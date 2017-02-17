@@ -4,6 +4,7 @@ RSpec.describe PinsController, type: :controller do
   include Devise::Test::ControllerHelpers
 
   let(:user) { create(:user) }
+  let(:user2) { create(:user) }
   let(:pin) { create(:pin) }
   let(:pin2) { create(:pin) }
 
