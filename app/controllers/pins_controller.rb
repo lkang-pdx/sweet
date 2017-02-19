@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-  before_action :set_pin, only: [:show, :edit, :update, :destroy, :repost]
+  before_action :set_pin, only: [:show, :edit, :update, :destroy, :repost, :like]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -45,6 +45,17 @@ class PinsController < ApplicationController
   def repost
     @pin.repost(current_user)
     redirect_to pins_path
+  end
+
+  def like
+    @like = @pin.likes.build(user_id: current_user.id)
+    if @like.save
+      flash[:notice] = "You liked this pin!"
+      redirect_to pins_path
+    else
+      flash[:notice] = "You already liked this pin!"
+      redirect_to pins_path
+    end
   end
 
   private

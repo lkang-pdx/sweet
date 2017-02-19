@@ -6,9 +6,10 @@
       .panel.panel-default.pin
         .panel-body
           = link_to image_tag(pin.pin_image.url(:medium)), pin
-        .panel-footer
+        .panel-footer.panel-custom
           %p= link_to pin.user.username, user_path(pin.user.username)
           %p= pin.description
+          %p= pluralize(pin.likes.count, "like")
           - if pin.user == current_user
             %div
               = link_to 'Edit', edit_pin_path(pin)
@@ -16,3 +17,4 @@
           - if user_signed_in? && pin.user != current_user
             %div
               = link_to 'Repost', repost_pin_path(pin), method: :post, data: {confirm: 'Are you sure?'}
+              = link_to 'Like', like_pin_path(pin), method: :post, class: 'pull-right'
