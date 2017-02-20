@@ -1,6 +1,8 @@
 class Pin < ApplicationRecord
   validates_presence_of :description
   belongs_to :user
+  belongs_to :board
+
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
 

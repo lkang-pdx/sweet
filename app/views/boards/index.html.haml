@@ -1,0 +1,9 @@
+%h2 All Boards
+=link_to 'New Board', new_board_path
+
+- @boards.each do |board|
+  %div
+    %h2= board.name
+    %p
+      = link_to 'Edit', edit_board_path(board)
+      | #{link_to 'Delete', board, method: :delete, data: {confirm: 'Are you sure?'}}

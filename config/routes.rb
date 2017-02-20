@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  resources :boards
+  
   resources :pins do
     member do
       post '/repost' => 'pins#repost'

@@ -13,5 +13,8 @@
   .field
     = f.label :pin_image
     = f.file_field :pin_image
+  .field
+    = f.label :board
+    = f.select :board_id, options_from_collection_for_select(current_user.boards, "id", "name")
   .actions
     = f.submit
